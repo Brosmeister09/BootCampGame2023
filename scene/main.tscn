@@ -10,11 +10,11 @@
 
 [node name="ParallaxLayer" type="ParallaxLayer" parent="ParallaxBackground"]
 motion_scale = Vector2(0.5, 0.5)
+motion_mirroring = Vector2(1152, 648)
 
 [node name="Background" type="TextureRect" parent="ParallaxBackground/ParallaxLayer"]
-offset_left = -1003.0
-offset_right = 1129.0
-offset_bottom = 782.0
+offset_right = 1152.0
+offset_bottom = 648.0
 texture = ExtResource("2_6okwy")
 stretch_mode = 1
 

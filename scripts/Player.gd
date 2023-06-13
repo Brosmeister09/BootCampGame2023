@@ -20,6 +20,10 @@ func _physics_process(delta):
 		velocity.y = JUMP_VELOCITY
 		
 		hasDoubleJumped = not is_on_floor()
+	
+	#quick fix for double jumping after falling of ledge
+	if velocity.y == 0 and is_on_floor():
+		hasDoubleJumped = false
 
 	# Get the input direction and handle the movement/deceleration.
 	# As good practice, you should replace UI actions with custom gameplay actions.
