@@ -1,9 +1,10 @@
-[gd_scene load_steps=5 format=3 uid="uid://w1hwp152d61"]
+[gd_scene load_steps=6 format=3 uid="uid://w1hwp152d61"]
 
 [ext_resource type="PackedScene" uid="uid://2tx8wagu7nmw" path="res://scene/player.tscn" id="1_0yemj"]
 [ext_resource type="Script" path="res://scripts/main.gd" id="1_t6gio"]
 [ext_resource type="PackedScene" uid="uid://d1ua5ghjm1q0c" path="res://scene/levelTest.tscn" id="2_4t6p4"]
 [ext_resource type="Texture2D" uid="uid://c13wfbde06k0g" path="res://art/Background/Purple.png" id="2_6okwy"]
+[ext_resource type="PackedScene" uid="uid://xjljvvuknwhc" path="res://scene/enemy.tscn" id="5_um4jq"]
 
 [node name="Main" type="Node"]
 script = ExtResource("1_t6gio")
@@ -23,9 +24,12 @@ stretch_mode = 1
 [node name="Level" parent="." instance=ExtResource("2_4t6p4")]
 
 [node name="Player" parent="." instance=ExtResource("1_0yemj")]
-position = Vector2(11, 595)
+position = Vector2(11, 592)
 
 [node name="Camera2D" type="Camera2D" parent="Player"]
 zoom = Vector2(2, 2)
+
+[node name="Mob" parent="." instance=ExtResource("5_um4jq")]
+position = Vector2(265, 589)
 
 [connection signal="fallen" from="Player" to="." method="_on_player_fallen"]
