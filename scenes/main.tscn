@@ -1,0 +1,35 @@
+[gd_scene load_steps=6 format=3 uid="uid://w1hwp152d61"]
+
+[ext_resource type="Script" path="res://scripts/main.gd" id="1_5xjth"]
+[ext_resource type="Texture2D" uid="uid://c13wfbde06k0g" path="res://art/Background/Purple.png" id="2_2fu2m"]
+[ext_resource type="PackedScene" uid="uid://d1ua5ghjm1q0c" path="res://scenes/levelTest.tscn" id="3_u0doy"]
+[ext_resource type="PackedScene" uid="uid://2tx8wagu7nmw" path="res://scenes/player.tscn" id="4_y4dej"]
+[ext_resource type="PackedScene" uid="uid://xjljvvuknwhc" path="res://scenes/enemy.tscn" id="5_x86h7"]
+
+[node name="Main" type="Node"]
+script = ExtResource("1_5xjth")
+
+[node name="ParallaxBackground" type="ParallaxBackground" parent="."]
+
+[node name="ParallaxLayer" type="ParallaxLayer" parent="ParallaxBackground"]
+motion_scale = Vector2(0.5, 0.5)
+motion_mirroring = Vector2(1152, 648)
+
+[node name="Background" type="TextureRect" parent="ParallaxBackground/ParallaxLayer"]
+offset_right = 1152.0
+offset_bottom = 648.0
+texture = ExtResource("2_2fu2m")
+stretch_mode = 1
+
+[node name="Level" parent="." instance=ExtResource("3_u0doy")]
+
+[node name="Player" parent="." instance=ExtResource("4_y4dej")]
+position = Vector2(11, 592)
+
+[node name="Camera2D" type="Camera2D" parent="Player"]
+zoom = Vector2(2, 2)
+
+[node name="Mob" parent="." instance=ExtResource("5_x86h7")]
+position = Vector2(265, 589)
+
+[connection signal="fallen" from="Player" to="." method="_on_player_fallen"]
