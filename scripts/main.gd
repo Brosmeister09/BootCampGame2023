@@ -22,6 +22,7 @@ func _on_player_respawn():
 	$Player.velocity.y = 0
 
 
+# Handle death of palyer
 func _on_player_died():
-	get_tree().reload_current_scene()
-	### TODO maybe add "You Died" Screen before reload later
+	# show "You Died" Screen before reload
+	get_tree().change_scene_to_file("res://scenes/defeatscreen.tscn")
