@@ -1,10 +1,13 @@
-[gd_scene load_steps=37 format=3 uid="uid://2tx8wagu7nmw"]
+[gd_scene load_steps=48 format=3 uid="uid://2tx8wagu7nmw"]
 
 [ext_resource type="Script" path="res://scripts/Player.gd" id="1_i0vp5"]
 [ext_resource type="Texture2D" uid="uid://b3b820i0m1rwg" path="res://art/Main Characters/Virtual Guy/Double Jump (32x32).png" id="2_52lb6"]
 [ext_resource type="Texture2D" uid="uid://bvm8wa8qschg8" path="res://art/Main Characters/Virtual Guy/Idle (32x32).png" id="2_snbwq"]
 [ext_resource type="Texture2D" uid="uid://biwdy6feshnbr" path="res://art/Main Characters/Virtual Guy/Jump (32x32).png" id="3_fntgi"]
+[ext_resource type="Texture2D" uid="uid://b7o711si7ukxf" path="res://art/Main Characters/Virtual Guy/Hit (32x32).png" id="3_jd5or"]
 [ext_resource type="Texture2D" uid="uid://bk6nonqa38gwp" path="res://art/Main Characters/Virtual Guy/Run (32x32).png" id="4_w57se"]
+[ext_resource type="AudioStream" uid="uid://socg2ybo72i0" path="res://sound/jump_sound_effect.wav" id="6_75u7h"]
+[ext_resource type="AudioStream" uid="uid://clqg4d8wx0t7b" path="res://sound/hit_sound_effect.wav" id="8_pctwm"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_n40b1"]
 atlas = ExtResource("2_52lb6")
@@ -29,6 +32,34 @@ region = Rect2(128, 0, 32, 32)
 [sub_resource type="AtlasTexture" id="AtlasTexture_4ecxq"]
 atlas = ExtResource("2_52lb6")
 region = Rect2(160, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gteds"]
+atlas = ExtResource("3_jd5or")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_nl7cd"]
+atlas = ExtResource("3_jd5or")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0nmr7"]
+atlas = ExtResource("3_jd5or")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_61k31"]
+atlas = ExtResource("3_jd5or")
+region = Rect2(96, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_se3t5"]
+atlas = ExtResource("3_jd5or")
+region = Rect2(128, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ix0vl"]
+atlas = ExtResource("3_jd5or")
+region = Rect2(160, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_b83qi"]
+atlas = ExtResource("3_jd5or")
+region = Rect2(192, 0, 32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_kfnnq"]
 atlas = ExtResource("2_snbwq")
@@ -149,6 +180,32 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
+"texture": SubResource("AtlasTexture_gteds")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_nl7cd")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0nmr7")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_61k31")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_se3t5")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ix0vl")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_b83qi")
+}],
+"loop": true,
+"name": &"hit",
+"speed": 20.0
+}, {
+"frames": [{
+"duration": 1.0,
 "texture": SubResource("AtlasTexture_kfnnq")
 }, {
 "duration": 1.0,
@@ -236,18 +293,39 @@ animations = [{
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ahu3i"]
+size = Vector2(18, 23)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_8p5lh"]
 size = Vector2(20, 24)
 
 [node name="Player" type="CharacterBody2D"]
+z_index = 1
 script = ExtResource("1_i0vp5")
 metadata/_edit_group_ = true
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+[node name="Animation_Body" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_ffxbs")
-animation = &"idle"
-frame = 10
-frame_progress = 0.243196
+animation = &"hit"
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(0, 4)
+[node name="Collision_Body" type="CollisionShape2D" parent="."]
+position = Vector2(0, 4.5)
 shape = SubResource("RectangleShape2D_ahu3i")
+
+[node name="Hit_Box" type="Area2D" parent="."]
+collision_mask = 3
+
+[node name="Collision_Hit" type="CollisionShape2D" parent="Hit_Box"]
+position = Vector2(0, 4)
+shape = SubResource("RectangleShape2D_8p5lh")
+
+[node name="Audio_Jump" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("6_75u7h")
+volume_db = -5.0
+
+[node name="Audio_Hit" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("8_pctwm")
+volume_db = -18.0
+
+[connection signal="hit" from="." to="." method="_on_hit"]
+[connection signal="animation_looped" from="Animation_Body" to="." method="_on_animation_body_animation_looped"]
+[connection signal="area_entered" from="Hit_Box" to="." method="_on_hit_box_area_entered"]

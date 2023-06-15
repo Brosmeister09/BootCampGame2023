@@ -1,4 +1,4 @@
-[gd_scene load_steps=29 format=3 uid="uid://xjljvvuknwhc"]
+[gd_scene load_steps=30 format=3 uid="uid://xjljvvuknwhc"]
 
 [ext_resource type="Texture2D" uid="uid://d17gify0uonyt" path="res://art/Main Characters/Pink Man/Idle (32x32).png" id="1_3fjiy"]
 [ext_resource type="Script" path="res://scripts/enemy.gd" id="1_y5nnm"]
@@ -179,23 +179,31 @@ animations = [{
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_cmcd0"]
+size = Vector2(19, 25)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_gydt1"]
 size = Vector2(21, 26)
 
 [node name="Mob" type="CharacterBody2D"]
+z_index = 1
 script = ExtResource("1_y5nnm")
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+[node name="Animation_Body" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_fytlg")
-animation = &"run"
-frame = 8
-frame_progress = 0.0684687
+animation = &"idle"
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(0.5, 3)
+[node name="Collision_Body" type="CollisionShape2D" parent="."]
+position = Vector2(0.5, 3.5)
 shape = SubResource("RectangleShape2D_cmcd0")
 
-[node name="MovementTimer" type="Timer" parent="."]
+[node name="Hit_Box" type="Area2D" parent="."]
+
+[node name="Collision_Hit" type="CollisionShape2D" parent="Hit_Box"]
+position = Vector2(0.5, 3)
+shape = SubResource("RectangleShape2D_gydt1")
+
+[node name="Timer_Movement" type="Timer" parent="."]
 wait_time = 2.0
 autostart = true
 
-[connection signal="timeout" from="MovementTimer" to="." method="_on_movement_timer_timeout"]
+[connection signal="timeout" from="Timer_Movement" to="." method="_on_movement_timer_timeout"]

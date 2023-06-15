@@ -9,7 +9,7 @@ var direction = 1
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	$AnimatedSprite2D.play("idle")
+	$Animation_Body.play("idle")
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -23,13 +23,12 @@ func _physics_process(delta):
 
 func _on_movement_timer_timeout():
 	moving = !moving
+	$Animation_Body.flip_h = direction < 0
 	
-	$AnimatedSprite2D.flip_h = direction < 0
-	
-	if(moving):
-		$AnimatedSprite2D.play("run")
+	if moving:
+		$Animation_Body.play("run")
 		velocity.x = SPEED * direction
 		direction = (-1) * direction
 	else:
-		$AnimatedSprite2D.play("idle")
+		$Animation_Body.play("idle")
 		velocity.x = 0
