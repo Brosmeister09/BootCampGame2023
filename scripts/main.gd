@@ -33,3 +33,6 @@ func _on_player_died():
 
 func _on_player_health_changed(currentHealth):
 	HUD.updateHealth(currentHealth)
+	
+func _on_player_score_changed(currentScore):
+	HUD.updateScore(currentScore)

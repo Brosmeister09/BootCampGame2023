@@ -7,6 +7,7 @@ signal hit
 signal respawn
 signal died
 signal healthChanged
+signal scoreChanged
 
 # Get the gravity from the project settings to be synced with RigidBody nodes.
 var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
@@ -15,6 +16,7 @@ var isHit = false
 
 @export var maxHealth: int = 3
 @onready var currentHealth: int = maxHealth
+@onready var currentScore: int = 0
 
 
 func _physics_process(delta):

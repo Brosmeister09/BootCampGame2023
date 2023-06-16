@@ -21,3 +21,6 @@ func updateHealth(currentHealth):
 	
 	for i in range(hearts.size()) :
 		hearts[i].update(i < currentHealth)
+		
+func updateScore(currentScore):
+	$ScoreLable.text = str(currentScore).pad_zeros(4)

@@ -39,3 +39,4 @@ position = Vector2(266, 592)
 [connection signal="died" from="Player" to="." method="_on_player_died"]
 [connection signal="healthChanged" from="Player" to="." method="_on_player_health_changed"]
 [connection signal="respawn" from="Player" to="." method="_on_player_respawn"]
+[connection signal="scoreChanged" from="Player" to="." method="_on_player_score_changed"]
