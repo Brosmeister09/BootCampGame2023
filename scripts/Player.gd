@@ -7,7 +7,6 @@ signal hit
 signal respawn
 signal died
 signal healthChanged
-signal scoreChanged
 
 @export var projectile : PackedScene
 # Get the gravity from the project settings to be synced with RigidBody nodes.

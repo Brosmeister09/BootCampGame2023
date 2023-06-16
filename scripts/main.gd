@@ -3,6 +3,8 @@ extends Node
 @onready var player = $Player
 @onready var HUD = $HUD
 
+var score = 0
+
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	HUD.setMaxHearts(player.maxHealth)
@@ -33,6 +35,8 @@ func _on_player_died():
 
 func _on_player_health_changed(currentHealth):
 	HUD.updateHealth(currentHealth)
-	
-func _on_player_score_changed(currentScore):
-	HUD.updateScore(currentScore)
+
+
+func _on_mob_died():
+	score += 1
+	HUD.updateScore(score)

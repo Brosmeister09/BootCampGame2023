@@ -2,12 +2,13 @@ extends CharacterBody2D
 
 const SPEED = 100.0
 
-var isHit = false
-
 # Get the gravity from the project settings to be synced with RigidBody nodes.
 var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
 var moving = false
 var direction = 1
+var isHit = false
+
+signal died
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -39,6 +40,7 @@ func _on_movement_timer_timeout():
 
 func _on_hit_box_area_entered(area):
 	if area.is_in_group("Projectiles"):
+		died.emit()
 		isHit = true
 		$Animation_Body.play("hit")
 		$Audio_Hit.play()

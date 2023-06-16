@@ -1,4 +1,4 @@
-#[gd_scene load_steps=7 format=3 uid="uid://w1hwp152d61"]
+[gd_scene load_steps=8 format=3 uid="uid://w1hwp152d61"]
 
 [ext_resource type="Script" path="res://scripts/main.gd" id="1_5xjth"]
 [ext_resource type="Texture2D" uid="uid://c13wfbde06k0g" path="res://art/Background/Purple.png" id="2_2fu2m"]
@@ -7,7 +7,6 @@
 [ext_resource type="PackedScene" uid="uid://xjljvvuknwhc" path="res://scenes/enemy.tscn" id="5_x86h7"]
 [ext_resource type="PackedScene" uid="uid://bb1usr6kg6ryx" path="res://scenes/item01.tscn" id="6_u08ny"]
 [ext_resource type="PackedScene" uid="uid://bjdp65trau3oh" path="res://scenes/hud.tscn" id="6_x6f7w"]
-
 
 [node name="Main" type="Node"]
 script = ExtResource("1_5xjth")
@@ -44,4 +43,4 @@ position = Vector2(131, 597)
 [connection signal="died" from="Player" to="." method="_on_player_died"]
 [connection signal="healthChanged" from="Player" to="." method="_on_player_health_changed"]
 [connection signal="respawn" from="Player" to="." method="_on_player_respawn"]
-[connection signal="scoreChanged" from="Player" to="." method="_on_player_score_changed"]
+[connection signal="died" from="Mob" to="." method="_on_mob_died"]
