@@ -1,0 +1,24 @@
+[gd_scene load_steps=3 format=3 uid="uid://bjdp65trau3oh"]
+
+[ext_resource type="Script" path="res://scripts/hud.gd" id="1_asa8i"]
+[ext_resource type="FontFile" uid="uid://bj78p2jqlul4y" path="res://art/fonts/m5x7.ttf" id="2_4nve4"]
+
+[node name="HUD" type="CanvasLayer"]
+script = ExtResource("1_asa8i")
+
+[node name="HeartsContainer" type="HBoxContainer" parent="."]
+offset_right = 16.0
+offset_bottom = 16.0
+scale = Vector2(5, 5)
+
+[node name="ScoreLable" type="Label" parent="."]
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -20.0
+offset_right = 20.0
+offset_bottom = 23.0
+grow_horizontal = 2
+theme_override_fonts/font = ExtResource("2_4nve4")
+theme_override_font_sizes/font_size = 80
+text = "0000"

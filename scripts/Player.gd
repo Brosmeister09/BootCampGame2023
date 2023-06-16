@@ -6,6 +6,8 @@ const JUMP_VELOCITY = -400.0
 signal hit
 signal respawn
 signal died
+signal healthChanged
+signal scoreChanged
 
 @export var projectile : PackedScene
 # Get the gravity from the project settings to be synced with RigidBody nodes.
@@ -16,6 +18,7 @@ var isHit = false
 
 @export var maxHealth: int = 3
 @onready var currentHealth: int = maxHealth
+@onready var currentScore: int = 0
 
 
 func _physics_process(delta):
@@ -102,4 +105,5 @@ func _on_hit():
 	if currentHealth <= 0:
 		currentHealth = maxHealth
 		died.emit()
+	healthChanged.emit(currentHealth)
 	print("Health left: " + str(currentHealth))
