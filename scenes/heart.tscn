@@ -1,0 +1,30 @@
+[gd_scene load_steps=5 format=3 uid="uid://bf2iqvmrneu7c"]
+
+[ext_resource type="Script" path="res://scripts/heart.gd" id="1_bkd5y"]
+[ext_resource type="Texture2D" uid="uid://buecrfmcim1kh" path="res://art/Menu/HUD/fullHeart.png" id="1_sehiv"]
+[ext_resource type="Texture2D" uid="uid://bsun65hsqy0o2" path="res://art/Menu/HUD/emptyHeart.png" id="2_c4i8a"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_oc0tk"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_sehiv")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_c4i8a")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="Heart" type="Panel"]
+self_modulate = Color(0, 0, 0, 0)
+custom_minimum_size = Vector2(16, 16)
+offset_right = 16.0
+offset_bottom = 16.0
+script = ExtResource("1_bkd5y")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_oc0tk")
+centered = false

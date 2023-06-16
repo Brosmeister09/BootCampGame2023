@@ -6,6 +6,7 @@ const JUMP_VELOCITY = -400.0
 signal hit
 signal respawn
 signal died
+signal healthChanged
 
 # Get the gravity from the project settings to be synced with RigidBody nodes.
 var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
@@ -80,4 +81,5 @@ func _on_hit():
 	if currentHealth <= 0:
 		currentHealth = maxHealth
 		died.emit()
+	healthChanged.emit(currentHealth)
 	print("Health left: " + str(currentHealth))
