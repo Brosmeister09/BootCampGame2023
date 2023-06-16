@@ -7,9 +7,11 @@ signal hit
 signal respawn
 signal died
 
+@export var projectile : PackedScene
 # Get the gravity from the project settings to be synced with RigidBody nodes.
 var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
 var hasDoubleJumped = false
+var hasShootAbility = false
 var isHit = false
 
 @export var maxHealth: int = 3
@@ -31,6 +33,10 @@ func _physics_process(delta):
 	#quick fix for double jumping after falling of ledge
 	if velocity.y == 0 and is_on_floor():
 		hasDoubleJumped = false
+		
+	# Handle shooting
+	if Input.is_action_just_pressed("shoot") and hasShootAbility and $Timer_Projectiles.is_stopped():
+		shoot()
 		
 	# Get the input direction and handle the movement/deceleration.
 	var direction = Input.get_axis("left", "right")
@@ -60,11 +66,27 @@ func _physics_process(delta):
 	move_and_slide()
 
 
+func shoot():
+	$Audio_Shoot.play()
+	var p = projectile.instantiate()
+	owner.add_child(p)
+	p.transform = self.global_transform
+	p.rotation = self.global_position.direction_to(get_global_mouse_position()).angle() # get current mouse angle
+	$Timer_Projectiles.start()
+
+
 # Handle collision via Hitbox
 func _on_hit_box_area_entered(area):
 	print("Player hit by: " + area.get_parent().name)
-	hit.emit()
-	isHit = true
+	
+	if area.get_parent().name == "Mob":
+		isHit = true
+		hit.emit()
+	elif area.get_parent().name == "Banana":
+		hasShootAbility = true
+		$Audio_Pickup.play()
+		get_parent().remove_child(area.get_parent()) # remove node
+		print("BANANA")
 
 
 # Handle animation_finished signal

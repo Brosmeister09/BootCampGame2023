@@ -14,7 +14,6 @@ scale = Vector2(7.5, 7.5)
 texture = ExtResource("2_s4wiw")
 
 [node name="Timer_Title" type="Timer" parent="."]
-wait_time = 2.5
 one_shot = true
 autostart = true
 

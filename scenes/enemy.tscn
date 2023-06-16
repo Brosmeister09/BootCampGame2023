@@ -1,8 +1,38 @@
-[gd_scene load_steps=30 format=3 uid="uid://xjljvvuknwhc"]
+[gd_scene load_steps=39 format=3 uid="uid://xjljvvuknwhc"]
 
 [ext_resource type="Texture2D" uid="uid://d17gify0uonyt" path="res://art/Main Characters/Pink Man/Idle (32x32).png" id="1_3fjiy"]
 [ext_resource type="Script" path="res://scripts/enemy.gd" id="1_y5nnm"]
+[ext_resource type="Texture2D" uid="uid://hy4a7ybe0qmm" path="res://art/Main Characters/Pink Man/Hit (32x32).png" id="2_8igw2"]
 [ext_resource type="Texture2D" uid="uid://boxebhbsxrwo8" path="res://art/Main Characters/Pink Man/Run (32x32).png" id="2_nspag"]
+[ext_resource type="AudioStream" uid="uid://t4567ea0l36m" path="res://sound/hit_enemy_sound_effect.wav" id="5_pod4l"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_to7sq"]
+atlas = ExtResource("2_8igw2")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_yswie"]
+atlas = ExtResource("2_8igw2")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_87jo4"]
+atlas = ExtResource("2_8igw2")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_sjova"]
+atlas = ExtResource("2_8igw2")
+region = Rect2(96, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pw3it"]
+atlas = ExtResource("2_8igw2")
+region = Rect2(128, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4lwru"]
+atlas = ExtResource("2_8igw2")
+region = Rect2(160, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4ppju"]
+atlas = ExtResource("2_8igw2")
+region = Rect2(192, 0, 32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_5q5pk"]
 atlas = ExtResource("1_3fjiy")
@@ -100,6 +130,32 @@ region = Rect2(352, 0, 32, 32)
 animations = [{
 "frames": [{
 "duration": 1.0,
+"texture": SubResource("AtlasTexture_to7sq")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_yswie")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_87jo4")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_sjova")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_pw3it")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4lwru")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4ppju")
+}],
+"loop": true,
+"name": &"hit",
+"speed": 20.0
+}, {
+"frames": [{
+"duration": 1.0,
 "texture": SubResource("AtlasTexture_5q5pk")
 }, {
 "duration": 1.0,
@@ -184,7 +240,7 @@ size = Vector2(19, 25)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_gydt1"]
 size = Vector2(21, 26)
 
-[node name="Mob" type="CharacterBody2D"]
+[node name="Mob" type="CharacterBody2D" groups=["Mobs"]]
 z_index = 1
 script = ExtResource("1_y5nnm")
 
@@ -206,4 +262,9 @@ shape = SubResource("RectangleShape2D_gydt1")
 wait_time = 2.0
 autostart = true
 
+[node name="Audio_Hit" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("5_pod4l")
+volume_db = -15.0
+
+[connection signal="area_entered" from="Hit_Box" to="." method="_on_hit_box_area_entered"]
 [connection signal="timeout" from="Timer_Movement" to="." method="_on_movement_timer_timeout"]

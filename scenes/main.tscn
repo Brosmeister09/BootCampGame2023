@@ -1,10 +1,11 @@
-[gd_scene load_steps=6 format=3 uid="uid://w1hwp152d61"]
+[gd_scene load_steps=7 format=3 uid="uid://w1hwp152d61"]
 
 [ext_resource type="Script" path="res://scripts/main.gd" id="1_5xjth"]
 [ext_resource type="Texture2D" uid="uid://c13wfbde06k0g" path="res://art/Background/Purple.png" id="2_2fu2m"]
 [ext_resource type="PackedScene" uid="uid://d1ua5ghjm1q0c" path="res://scenes/level01.tscn" id="3_18wxh"]
 [ext_resource type="PackedScene" uid="uid://2tx8wagu7nmw" path="res://scenes/player.tscn" id="4_y4dej"]
 [ext_resource type="PackedScene" uid="uid://xjljvvuknwhc" path="res://scenes/enemy.tscn" id="5_x86h7"]
+[ext_resource type="PackedScene" uid="uid://bb1usr6kg6ryx" path="res://scenes/item01.tscn" id="6_u08ny"]
 
 [node name="Main" type="Node"]
 script = ExtResource("1_5xjth")
@@ -32,6 +33,9 @@ zoom = Vector2(2, 2)
 
 [node name="Mob" parent="." instance=ExtResource("5_x86h7")]
 position = Vector2(266, 592)
+
+[node name="Banana" parent="." instance=ExtResource("6_u08ny")]
+position = Vector2(131, 597)
 
 [connection signal="died" from="Player" to="." method="_on_player_died"]
 [connection signal="respawn" from="Player" to="." method="_on_player_respawn"]

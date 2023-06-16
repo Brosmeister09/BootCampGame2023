@@ -2,6 +2,8 @@ extends CharacterBody2D
 
 const SPEED = 100.0
 
+var isHit = false
+
 # Get the gravity from the project settings to be synced with RigidBody nodes.
 var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
 var moving = false
@@ -25,10 +27,20 @@ func _on_movement_timer_timeout():
 	moving = !moving
 	$Animation_Body.flip_h = direction < 0
 	
-	if moving:
-		$Animation_Body.play("run")
-		velocity.x = SPEED * direction
-		direction = (-1) * direction
-	else:
-		$Animation_Body.play("idle")
-		velocity.x = 0
+	if not isHit:
+		if moving:
+			$Animation_Body.play("run")
+			velocity.x = SPEED * direction
+			direction = (-1) * direction
+		else:
+			$Animation_Body.play("idle")
+			velocity.x = 0
+
+
+func _on_hit_box_area_entered(area):
+	if area.is_in_group("Projectiles"):
+		isHit = true
+		$Animation_Body.play("hit")
+		$Audio_Hit.play()
+		await get_tree().create_timer(0.5).timeout
+		queue_free()
