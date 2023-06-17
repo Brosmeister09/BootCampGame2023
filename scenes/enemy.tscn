@@ -267,4 +267,4 @@ stream = ExtResource("5_pod4l")
 volume_db = -15.0
 
 [connection signal="area_entered" from="Hit_Box" to="." method="_on_hit_box_area_entered"]
-[connection signal="timeout" from="Timer_Movement" to="." method="_on_movement_timer_timeout"]
+[connection signal="timeout" from="Timer_Movement" to="." method="_on_timer_movement_timeout"]

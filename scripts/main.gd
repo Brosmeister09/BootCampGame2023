@@ -7,7 +7,6 @@ extends Node
 @onready var itemClass = preload("res://scenes/item01.tscn")
 @onready var portalClass = preload("res://scenes/portal.tscn")
 @onready var currentLevelClass = preload("res://scenes/level01.tscn")
-
 @onready var currentLevel = preload("res://scenes/level01.tscn")
 var addedScenes = []
 
@@ -58,7 +57,7 @@ func newLevel():
 
 # Handle respawn signal
 func _on_player_respawn():
-	player.position = $Level/Start.position
+	player.position = level.Start.position
 	player.velocity.x = 0
 	player.velocity.y = 0
 

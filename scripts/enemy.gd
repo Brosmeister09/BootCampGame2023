@@ -24,7 +24,7 @@ func _physics_process(delta):
 	move_and_slide()
 
 
-func _on_movement_timer_timeout():
+func _on_timer_movement_timeout():
 	moving = !moving
 	$Animation_Body.flip_h = direction < 0
 	
