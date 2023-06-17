@@ -140,7 +140,7 @@ radius = 9.0
 mass = 0.18
 script = ExtResource("1_81ke3")
 
-[node name="Animation_Item" type="AnimatedSprite2D" parent="." groups=["Bananas"]]
+[node name="Animation_Item" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_x0qms")
 frame = 1
 

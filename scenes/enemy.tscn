@@ -248,13 +248,13 @@ script = ExtResource("1_y5nnm")
 sprite_frames = SubResource("SpriteFrames_fytlg")
 animation = &"idle"
 
-[node name="Collision_Body" type="CollisionShape2D" parent="."]
+[node name="Collision_Body" type="CollisionShape2D" parent="." groups=["Mobs"]]
 position = Vector2(0.5, 3.5)
 shape = SubResource("RectangleShape2D_cmcd0")
 
-[node name="Hit_Box" type="Area2D" parent="."]
+[node name="Hit_Box" type="Area2D" parent="." groups=["Mobs"]]
 
-[node name="Collision_Hit" type="CollisionShape2D" parent="Hit_Box"]
+[node name="Collision_Hit" type="CollisionShape2D" parent="Hit_Box" groups=["Mobs"]]
 position = Vector2(0.5, 3)
 shape = SubResource("RectangleShape2D_gydt1")
 

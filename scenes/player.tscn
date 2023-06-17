@@ -305,7 +305,7 @@ z_index = 1
 script = ExtResource("1_i0vp5")
 metadata/_edit_group_ = true
 
-[node name="Animation_Body" type="AnimatedSprite2D" parent="." groups=["Player"]]
+[node name="Animation_Body" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_ffxbs")
 animation = &"double jump"
 
@@ -324,11 +324,11 @@ shape = SubResource("RectangleShape2D_8p5lh")
 wait_time = 0.2
 one_shot = true
 
-[node name="Audio_Jump" type="AudioStreamPlayer" parent="." groups=["Player"]]
+[node name="Audio_Jump" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("6_75u7h")
 volume_db = -5.0
 
-[node name="Audio_Hit" type="AudioStreamPlayer" parent="." groups=["Player"]]
+[node name="Audio_Hit" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("8_pctwm")
 volume_db = -18.0
 
