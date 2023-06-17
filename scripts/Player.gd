@@ -8,7 +8,7 @@ signal respawn
 signal died
 signal healthChanged
 
-@export var projectile : PackedScene
+@onready var projectile = preload("res://scenes/projectile.tscn")
 # Get the gravity from the project settings to be synced with RigidBody nodes.
 var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
 var hasDoubleJumped = false
@@ -79,15 +79,17 @@ func shoot():
 
 # Handle collision via Hitbox
 func _on_hit_box_area_entered(area):
-	print("Player hit by: " + area.get_parent().name)
 	
-	if area.get_parent().name == "Mob":
+	var collidedObj = area.get_parent()
+	print("Player hit by: " + collidedObj.name)
+	
+	if collidedObj.is_in_group("Mobs"):
 		isHit = true
 		hit.emit()
-	elif area.get_parent().name == "Banana":
+	elif collidedObj.is_in_group("Bananas"):
 		hasShootAbility = true
 		$Audio_Pickup.play()
-		get_parent().remove_child(area.get_parent()) # remove node
+		get_parent().remove_child(collidedObj) # remove node
 		print("BANANA")
 
 

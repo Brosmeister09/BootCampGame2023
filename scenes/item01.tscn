@@ -136,20 +136,20 @@ radius = 8.0
 [sub_resource type="CircleShape2D" id="CircleShape2D_b5spq"]
 radius = 9.0
 
-[node name="item01" type="RigidBody2D"]
+[node name="item01" type="RigidBody2D" groups=["Bananas"]]
 mass = 0.18
 script = ExtResource("1_81ke3")
 
-[node name="Animation_Item" type="AnimatedSprite2D" parent="."]
+[node name="Animation_Item" type="AnimatedSprite2D" parent="." groups=["Bananas"]]
 sprite_frames = SubResource("SpriteFrames_x0qms")
 frame = 1
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." groups=["Bananas"]]
 position = Vector2(0, -2)
 shape = SubResource("CircleShape2D_y3jih")
 
-[node name="Hit_Box" type="Area2D" parent="."]
+[node name="Hit_Box" type="Area2D" parent="." groups=["Bananas"]]
 position = Vector2(0, -2)
 
-[node name="Collision_Hit" type="CollisionShape2D" parent="Hit_Box"]
+[node name="Collision_Hit" type="CollisionShape2D" parent="Hit_Box" groups=["Bananas"]]
 shape = SubResource("CircleShape2D_b5spq")

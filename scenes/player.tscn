@@ -1,8 +1,7 @@
-[gd_scene load_steps=51 format=3 uid="uid://2tx8wagu7nmw"]
+[gd_scene load_steps=50 format=3 uid="uid://2tx8wagu7nmw"]
 
 [ext_resource type="Script" path="res://scripts/Player.gd" id="1_i0vp5"]
 [ext_resource type="Texture2D" uid="uid://b3b820i0m1rwg" path="res://art/Main Characters/Virtual Guy/Double Jump (32x32).png" id="2_52lb6"]
-[ext_resource type="PackedScene" uid="uid://3y5wogj7bxkt" path="res://scenes/projectile.tscn" id="2_o6y37"]
 [ext_resource type="Texture2D" uid="uid://bvm8wa8qschg8" path="res://art/Main Characters/Virtual Guy/Idle (32x32).png" id="2_snbwq"]
 [ext_resource type="Texture2D" uid="uid://biwdy6feshnbr" path="res://art/Main Characters/Virtual Guy/Jump (32x32).png" id="3_fntgi"]
 [ext_resource type="Texture2D" uid="uid://b7o711si7ukxf" path="res://art/Main Characters/Virtual Guy/Hit (32x32).png" id="3_jd5or"]
@@ -304,7 +303,6 @@ size = Vector2(20, 24)
 [node name="Player" type="CharacterBody2D" groups=["Player"]]
 z_index = 1
 script = ExtResource("1_i0vp5")
-projectile = ExtResource("2_o6y37")
 metadata/_edit_group_ = true
 
 [node name="Animation_Body" type="AnimatedSprite2D" parent="." groups=["Player"]]

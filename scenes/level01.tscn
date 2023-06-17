@@ -1,6 +1,7 @@
-[gd_scene load_steps=5 format=3 uid="uid://d1ua5ghjm1q0c"]
+[gd_scene load_steps=6 format=3 uid="uid://dt7lusxpr48pg"]
 
 [ext_resource type="Texture2D" uid="uid://caq1ntajrotee" path="res://art/Terrain/Terrain (16x16).png" id="1_4q5k7"]
+[ext_resource type="Script" path="res://scripts/level.gd" id="1_lxqr2"]
 [ext_resource type="AudioStream" uid="uid://w2dgqsdisf5v" path="res://sound/theme_music_01.mp3" id="2_ggcmo"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_ascs8"]
@@ -594,6 +595,7 @@ physics_layer_0/collision_layer = 1
 sources/1 = SubResource("TileSetAtlasSource_ascs8")
 
 [node name="Level" type="Node2D"]
+script = ExtResource("1_lxqr2")
 
 [node name="TileMap" type="TileMap" parent="."]
 tile_set = SubResource("TileSet_8py77")
@@ -607,3 +609,16 @@ position = Vector2(36, 589)
 stream = ExtResource("2_ggcmo")
 volume_db = -15.0
 autoplay = true
+
+[node name="EnemySpawnerGroup" type="Node" parent="."]
+
+[node name="EnemySpawner1" type="Marker2D" parent="EnemySpawnerGroup"]
+position = Vector2(323, 594)
+
+[node name="EnemySpawner2" type="Marker2D" parent="EnemySpawnerGroup"]
+position = Vector2(566, 565)
+
+[node name="ItemSpawnerGroup" type="Node" parent="."]
+
+[node name="ItemSpawner1" type="Marker2D" parent="ItemSpawnerGroup"]
+position = Vector2(151, 591)
