@@ -615,10 +615,10 @@ autoplay = true
 [node name="EnemySpawner1" type="Marker2D" parent="EnemySpawnerGroup"]
 position = Vector2(323, 594)
 
-[node name="EnemySpawner2" type="Marker2D" parent="EnemySpawnerGroup"]
-position = Vector2(566, 565)
-
 [node name="ItemSpawnerGroup" type="Node" parent="."]
 
 [node name="ItemSpawner1" type="Marker2D" parent="ItemSpawnerGroup"]
 position = Vector2(151, 591)
+
+[node name="End" type="Marker2D" parent="."]
+position = Vector2(673, 543)
