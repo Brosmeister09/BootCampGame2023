@@ -307,7 +307,7 @@ metadata/_edit_group_ = true
 
 [node name="Animation_Body" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_ffxbs")
-animation = &"double jump"
+animation = &"idle"
 
 [node name="Collision_Body" type="CollisionShape2D" parent="." groups=["Player"]]
 position = Vector2(0, 4.5)
@@ -321,7 +321,7 @@ position = Vector2(0, 4)
 shape = SubResource("RectangleShape2D_8p5lh")
 
 [node name="Timer_Projectiles" type="Timer" parent="."]
-wait_time = 0.2
+wait_time = 0.3
 one_shot = true
 
 [node name="Audio_Jump" type="AudioStreamPlayer" parent="."]

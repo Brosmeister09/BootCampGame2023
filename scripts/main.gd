@@ -6,7 +6,7 @@ extends Node
 @onready var mobClass = preload("res://scenes/enemy.tscn")
 @onready var itemClass = preload("res://scenes/item01.tscn")
 
-@onready var currentLevel = preload("res://scenes/level01.tscn")
+@onready var currentLevel = preload("res://scenes/level02.tscn")
 
 var score = 0
 
