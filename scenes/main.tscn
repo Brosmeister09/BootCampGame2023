@@ -27,7 +27,3 @@ position = Vector2(60, 592)
 zoom = Vector2(2, 2)
 
 [node name="HUD" parent="." instance=ExtResource("6_x6f7w")]
-
-[connection signal="died" from="Player" to="." method="_on_player_died"]
-[connection signal="healthChanged" from="Player" to="." method="_on_player_health_changed"]
-[connection signal="respawn" from="Player" to="." method="_on_player_respawn"]
