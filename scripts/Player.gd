@@ -67,7 +67,7 @@ func _physics_process(delta):
 
 	move_and_slide()
 
-
+# Handle shoot input
 func shoot():
 	$Audio_Shoot.play()
 	var p = projectile.instantiate()

@@ -8,11 +8,7 @@ func _ready():
 	$AnimatedSprite2D.play("idle")
 
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(_delta):
-	pass
-
-
+# handle collision and emit level changed
 func _on_area_entered(area):
 	if area.is_in_group("Player"):
 		levelChange.emit()

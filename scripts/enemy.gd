@@ -24,6 +24,7 @@ func _physics_process(delta):
 	move_and_slide()
 
 
+# Handle Movement timer to change state
 func _on_timer_movement_timeout():
 	moving = !moving
 	$Animation_Body.flip_h = direction < 0
@@ -38,6 +39,7 @@ func _on_timer_movement_timeout():
 			velocity.x = 0
 
 
+# Handle hitbox collision
 func _on_hit_box_area_entered(area):
 	if area.is_in_group("Projectiles"):
 		died.emit()

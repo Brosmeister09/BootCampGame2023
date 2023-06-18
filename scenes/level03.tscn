@@ -1,7 +1,8 @@
-[gd_scene load_steps=6 format=3 uid="uid://cqjl7rjx0yih2"]
+[gd_scene load_steps=7 format=3 uid="uid://cqjl7rjx0yih2"]
 
 [ext_resource type="Script" path="res://scripts/level.gd" id="1_6day7"]
 [ext_resource type="Texture2D" uid="uid://caq1ntajrotee" path="res://art/Terrain/Terrain (16x16).png" id="2_dfear"]
+[ext_resource type="PackedScene" uid="uid://dt7lusxpr48pg" path="res://scenes/level01.tscn" id="2_ka3dr"]
 [ext_resource type="AudioStream" uid="uid://w2dgqsdisf5v" path="res://sound/theme_music_01.mp3" id="3_cggca"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_ascs8"]
@@ -596,6 +597,7 @@ sources/1 = SubResource("TileSetAtlasSource_ascs8")
 
 [node name="Level" type="Node2D"]
 script = ExtResource("1_6day7")
+nextLevel = ExtResource("2_ka3dr")
 
 [node name="TileMap" type="TileMap" parent="."]
 tile_set = SubResource("TileSet_8py77")

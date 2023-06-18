@@ -24,6 +24,7 @@ func _process(_delta):
 	pass
 
 
+# Load level and instantiate enemies, items and portals
 func newLevel():
 	level = currentLevelClass.instantiate()
 	addedScenes.append(level)
@@ -36,7 +37,6 @@ func newLevel():
 	portal.connect("levelChange", _on_portal_level_change)
 	addedScenes.append(portal)
 	call_deferred("add_child", portal)
-	
 	
 	var enemySpawners = level.EnemySpawnerGroup.get_children()
 	for i in enemySpawners:
@@ -68,14 +68,18 @@ func _on_player_died():
 	get_tree().change_scene_to_file("res://scenes/defeatscreen.tscn")
 
 
+# Update player health in hearts
 func _on_player_health_changed(currentHealth):
 	HUD.updateHealth(currentHealth)
 
 
+# Increase score after kill
 func _on_mob_died():
 	score += 1
 	HUD.updateScore(score)
 	
+
+# Change level scene when goal is reached
 func _on_portal_level_change():
 	for i in addedScenes:
 		if i!= null and i.is_inside_tree():

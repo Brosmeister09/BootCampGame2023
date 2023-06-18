@@ -13,8 +13,3 @@ func _ready():
 	End = $End
 	EnemySpawnerGroup = $EnemySpawnerGroup
 	ItemSpawnerGroup = $ItemSpawnerGroup
-
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(_delta):
-	pass
