@@ -244,7 +244,7 @@ size = Vector2(21, 26)
 z_index = 1
 script = ExtResource("1_y5nnm")
 
-[node name="Animation_Body" type="AnimatedSprite2D" parent="."]
+[node name="Animation_Body" type="AnimatedSprite2D" parent="." groups=["Mobs"]]
 sprite_frames = SubResource("SpriteFrames_fytlg")
 animation = &"idle"
 
@@ -258,11 +258,11 @@ shape = SubResource("RectangleShape2D_cmcd0")
 position = Vector2(0.5, 3)
 shape = SubResource("RectangleShape2D_gydt1")
 
-[node name="Timer_Movement" type="Timer" parent="."]
+[node name="Timer_Movement" type="Timer" parent="." groups=["Mobs"]]
 wait_time = 2.0
 autostart = true
 
-[node name="Audio_Hit" type="AudioStreamPlayer" parent="."]
+[node name="Audio_Hit" type="AudioStreamPlayer" parent="." groups=["Mobs"]]
 stream = ExtResource("5_pod4l")
 volume_db = -15.0
 

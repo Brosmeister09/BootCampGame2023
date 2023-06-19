@@ -208,7 +208,7 @@ z_index = 1
 script = ExtResource("1_i0vp5")
 metadata/_edit_group_ = true
 
-[node name="Animation_Body" type="AnimatedSprite2D" parent="."]
+[node name="Animation_Body" type="AnimatedSprite2D" parent="." groups=["Player"]]
 sprite_frames = SubResource("SpriteFrames_ffxbs")
 animation = &"idle"
 
